@@ -4,10 +4,12 @@
 	<id>drawio</id>
 	<name>Drawio</name>
 	<description>Drawio diagrams right inside ownCloud</description>
-	<licence>GPL</licence>
+	<licence>gplv2</licence>
 	<author>Tom Needham</author>
-	<version>0.0.1</version>
+	<version>0.0.7</version>
 	<category>productivity</category>
+	<summary>Integration of Draw.io editor into ownCloud Files app for creating and modifying diagrams</summary>
+	<screenshot>https://raw.githubusercontent.com/tomneedham/oc-drawio/master/screenshot.png</screenshot>
 	<dependencies>
 		<owncloud min-version="10.0" max-version="10.1" />
 	</dependencies>
