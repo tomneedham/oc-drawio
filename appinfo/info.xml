@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<info>
+	<namespace>Drawio</namespace>
+	<id>drawio</id>
+	<name>Drawio</name>
+	<description>Drawio diagrams right inside ownCloud</description>
+	<licence>GPL</licence>
+	<author>Tom Needham</author>
+	<version>0.0.1</version>
+	<category>productivity</category>
+	<dependencies>
+		<owncloud min-version="10.0" max-version="10.1" />
+	</dependencies>
+</info>
