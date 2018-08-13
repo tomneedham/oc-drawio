@@ -8,7 +8,7 @@
 	<author>Tom Needham</author>
 	<version>0.0.3</version>
 	<category>productivity</category>
-	<screenshot>https://github.com/tomneedham/oc-drawio/blob/master/screenshot.png</screenshot>
+	<screenshot>https://raw.githubusercontent.com/tomneedham/oc-drawio/master/screenshot.png</screenshot>
 	<dependencies>
 		<owncloud min-version="10.0" max-version="10.1" />
 	</dependencies>
