@@ -6,7 +6,7 @@
 	<description>Drawio diagrams right inside ownCloud</description>
 	<licence>GPL</licence>
 	<author>Tom Needham</author>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<category>productivity</category>
 	<screenshot>https://github.com/tomneedham/oc-drawio/blob/master/screenshot.png</screenshot>
 	<dependencies>
