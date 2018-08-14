@@ -45,7 +45,7 @@ class PageController extends Controller {
 	protected $userSession;
 	
 	public function __construct(
-		string $appName,
+		$appName,
 		IRequest $request,
 		IRootFolder $rootFolder,
 		IL10N $l,

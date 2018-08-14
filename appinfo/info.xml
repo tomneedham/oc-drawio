@@ -3,7 +3,12 @@
 	<namespace>Drawio</namespace>
 	<id>drawio</id>
 	<name>Drawio</name>
-	<description>Drawio diagrams right inside ownCloud</description>
+	<description>Draw.io is integrated diagramming that works with the collaboration
+		tools you and your team are already using. Create your diagrams directly
+		in your ownCloud using any browser and save your work on your favorite
+		cloud storage. For more information what you can do with draw.io see
+		the examples: https://about.draw.io/features/examples/
+	</description>
 	<licence>gplv2</licence>
 	<author>Tom Needham</author>
 	<version>0.0.7</version>
@@ -13,4 +18,6 @@
 	<dependencies>
 		<owncloud min-version="10.0" max-version="10.1" />
 	</dependencies>
+	<bugs>https://github.com/tomneedham/oc-drawio/issues</bugs>
+	<repository type="git">https://github.com/tomneedham/oc-drawio.git</repository>
 </info>

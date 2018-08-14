@@ -32,7 +32,9 @@ class Application extends App {
 
 	const APPID = 'drawio';
 
-	public function __construct(EventDispatcherInterface $dispatcher, IUserSession $userSession) {
+	public function __construct(
+		EventDispatcherInterface $dispatcher,
+		IUserSession $userSession) {
 		parent::__construct(self::APPID);
 
 		if ($userSession->isLoggedIn()) {
