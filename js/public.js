@@ -13,7 +13,6 @@ window.addEventListener("message", eventHandler);
 
 $(document).ready(function(){
 	if ($('#isPublic').val()) {
-		// TODO this needs to be imported
 		var src = 'https://www.draw.io?embed=1&chrome=0&spin=1&stealth=1&proto=json';
 		var html ='<iframe ' +
 			'id="drawioEditor"' +
