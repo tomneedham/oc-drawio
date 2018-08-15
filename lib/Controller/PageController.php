@@ -34,9 +34,6 @@ use OCP\IUserSession;
 
 class PageController extends Controller {
 
-	const SERVERURL = 'https://www.draw.io';
-	const THEME = 'minimal';
-
 	/** @var IRootFolder  */
 	protected $rootFolder;
 	/** @var IL10N  */
@@ -68,11 +65,6 @@ class PageController extends Controller {
 			'editor');
 		$csp = new ContentSecurityPolicy();
 		$csp->allowInlineScript(true);
-		$csp->addAllowedScriptDomain(self::SERVERURL);
-		$csp->addAllowedFrameDomain(self::SERVERURL);
-		$csp->addAllowedFrameDomain("blob:");
-		$csp->addAllowedChildSrcDomain(self::SERVERURL);
-		$csp->addAllowedChildSrcDomain("blob:");
 		$response->setContentSecurityPolicy($csp);
 		$UID = $this->userSession->getUser()->getUID();
 		$userFolder = $this->rootFolder->getUserFolder($UID);
@@ -96,12 +88,12 @@ class PageController extends Controller {
 			'stealth' => 1,
 			'spin' => 1,
 			'proto' => 'json',
-			'ui' => self::THEME
+			'ui' => 'minimal'
 		];
 		if (!$canEdit) {
 			$params['chrome'] = 0;
 		}
-		$dioString = self::SERVERURL . '?' . http_build_query($params);
+		$dioString = \OC::$server->query(Application::class)->getDrawIoHost() . '?' . http_build_query($params);
 		$response->setParams([
 			'path' => $filePath,
 			'dio_src_string' => $dioString,
