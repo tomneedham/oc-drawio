@@ -24,3 +24,4 @@ new \OCA\Drawio\Application(
 	\OC::$server->getEventDispatcher(),
 	\OC::$server->getUserSession()
 );
+

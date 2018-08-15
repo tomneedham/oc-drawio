@@ -22,6 +22,7 @@
 
 namespace OCA\Drawio;
 
+use OC\Security\CSP\ContentSecurityPolicy;
 use OCP\AppFramework\App;
 use OCP\IRequest;
 use OCP\IUserSession;
@@ -39,11 +40,24 @@ class Application extends App {
 
 		if ($userSession->isLoggedIn()) {
 			$dispatcher->addListener('OCA\Files::loadAdditionalScripts', function() {
-				Util::addScript(self::APPID, "files");
-				Util::addStyle(self::APPID, "files");
+				Util::addScript(self::APPID, 'files');
+				Util::addStyle(self::APPID, 'files');
 
 			});
 		}
+
+		$dispatcher->addListener(
+			'OCA\Files_Sharing::loadAdditionalScripts',
+			function() {
+				Util::addScript(self::APPID, 'public');
+				Util::addScript(self::APPID, 'editor');
+			}
+		);
+
+		$manager = \OC::$server->getContentSecurityPolicyManager();
+		$policy = new ContentSecurityPolicy();
+		$policy->addAllowedFrameDomain('https://www.draw.io');
+		$manager->addDefaultPolicy($policy);
 	}
 
 }
