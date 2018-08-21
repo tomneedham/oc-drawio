@@ -35,7 +35,7 @@
 				var url = OC.generateUrl("/apps/" + OCA.Drawio.AppName + "/editor/{fileId}", {
 					fileId: fileInfo.id
 				});
-				window.location.href = url
+				window.open(url, '_blank');
 			})
 			.fail(function (status) {
 				OC.Notification.showTemporary(t(OCA.Drawio.AppName, "Failed to create a new file."));

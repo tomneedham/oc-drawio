@@ -90,6 +90,8 @@
 	OCA.Drawio.ExitHandler = function(eventHandler, path) {
 		// Stop listening
 		window.removeEventListener("message", eventHandler);
+		window.close();
+		// If this doesn't work, fallback to opening the files app instead.
 		OC.Files.getClient().getFileInfo(path)
 			.then(function (status, fileInfo) {
 				window.location.href = OC.generateUrl(
