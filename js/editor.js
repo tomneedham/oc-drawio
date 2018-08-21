@@ -29,6 +29,15 @@
 		};
 	}
 
+	OCA.Drawio.LoadPublicFileHandler = function(eventHandler, downloadPath, editWindow) {
+		$.get( downloadPath, function( data ) {
+			editWindow.postMessage(JSON.stringify({
+				action: "load",
+				xml: data
+			}), "*");
+		});
+	};
+
 	OCA.Drawio.LoadEditorHandler = function(eventHandler, path, editWindow) {
 		// Handle the load event at the start of the page load
 		var loadMsg = OC.Notification.show(t(OCA.Drawio.AppName, "Loading diagram..."));

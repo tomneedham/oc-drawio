@@ -22,8 +22,9 @@
 
 namespace OCA\Drawio;
 
+use OC\Security\CSP\ContentSecurityPolicy;
 use OCP\AppFramework\App;
-use OCP\IRequest;
+use OCP\IConfig;
 use OCP\IUserSession;
 use OCP\Util;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -32,18 +33,46 @@ class Application extends App {
 
 	const APPID = 'drawio';
 
+	/** @var IConfig  */
+	protected $config;
+
 	public function __construct(
 		EventDispatcherInterface $dispatcher,
-		IUserSession $userSession) {
+		IUserSession $userSession,
+		IConfig $config) {
 		parent::__construct(self::APPID);
+		$this->config = $config;
 
+		// Add scripts for files app integration
 		if ($userSession->isLoggedIn()) {
 			$dispatcher->addListener('OCA\Files::loadAdditionalScripts', function() {
-				Util::addScript(self::APPID, "files");
-				Util::addStyle(self::APPID, "files");
+				Util::addScript(self::APPID, 'files');
+				Util::addStyle(self::APPID, 'files');
 
 			});
 		}
+
+		// Add scripts for public preview
+		$dispatcher->addListener(
+			'OCA\Files_Sharing::loadAdditionalScripts',
+			function() {
+				Util::addScript(self::APPID, 'public');
+				Util::addScript(self::APPID, 'editor');
+			}
+		);
+
+		$manager = \OC::$server->getContentSecurityPolicyManager();
+		$policy = new ContentSecurityPolicy();
+		$publicHost = 'https://www.draw.io';
+		$policy->addAllowedFrameDomain($publicHost);
+		if ($this->getDrawIoHost() !== $publicHost) {
+			$policy->addAllowedFrameDomain($this->getDrawIoHost());
+		}
+		$manager->addDefaultPolicy($policy);
+	}
+
+	public function getDrawIoHost() {
+		return $this->config->getAppValue(self::APPID, 'host_url', 'https://www.draw.io');
 	}
 
 }

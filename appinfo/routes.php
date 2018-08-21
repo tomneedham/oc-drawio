@@ -22,7 +22,8 @@
 
 $app = new \OCA\Drawio\Application(
 	\OC::$server->getEventDispatcher(),
-	\OC::$server->getUserSession()
+	\OC::$server->getUserSession(),
+	\OC::$server->getConfig()
 );
 $app->registerRoutes(
 	$this, [
