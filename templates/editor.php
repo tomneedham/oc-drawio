@@ -44,7 +44,7 @@ style('drawio', 'editor');
 		OCA.Drawio.LoadEventHandler(
 			$('#drawioEditor')[0].contentWindow,
 			'<?php echo urldecode($_['path']); ?>',
-			'https://www.draw.io'
+			'https://embed.diagrams.net'
 		);
 	});
 </script>
