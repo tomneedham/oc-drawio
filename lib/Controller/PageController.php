@@ -34,7 +34,7 @@ use OCP\IUserSession;
 
 class PageController extends Controller {
 
-	const SERVERURL = 'https://www.draw.io';
+	const SERVERURL = 'https://embed.diagrams.net';
 	const THEME = 'minimal';
 
 	/** @var IRootFolder  */
