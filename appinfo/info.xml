@@ -11,7 +11,7 @@
 	</description>
 	<licence>gplv2</licence>
 	<author>Tom Needham</author>
-	<version>0.0.8</version>
+	<version>0.0.9</version>
 	<category>productivity</category>
 	<summary>Integration of Draw.io editor into ownCloud Files app for creating and modifying diagrams</summary>
 	<screenshot>https://raw.githubusercontent.com/tomneedham/oc-drawio/master/screenshot.png</screenshot>
