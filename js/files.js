@@ -52,15 +52,15 @@
 
 			// Attach to these two mimes
 			var mimes = {
-				"xml": {"mime": "application/xml", "type": "text"},
-				"drawio": {"mime": "application/octet-stream", "type": "text"}
+				"xml": {"mime": "application/xml", "default": false},
+				"drawio": {"mime": "application/octet-stream", "default": true}
 			};
 
-			$.each(mimes, function (ext, attr) {
+			$.each(mimes, function (ext, options) {
 				fileList.fileActions.registerAction({
 					name: "drawio-editor",
 					displayName: t(OCA.Drawio.AppName, "Open in Draw.io"),
-					mime: attr.mime,
+					mime: options.mime,
 					permissions: OC.PERMISSION_READ | OC.PERMISSION_UPDATE,
 					icon: function () {
 						return OC.imagePath(OCA.Drawio.AppName, "drawio");
@@ -70,9 +70,9 @@
 						OCA.Drawio.EditFileNewWindow(OC.joinPaths(dir, fileName));
 					}
 				});
-				if( ext === 'drawio') {
+				if (options.default) {
 					// Default for xml
-					fileList.fileActions.setDefault(attr.mime, "drawio-editor");
+					fileList.fileActions.setDefault(options.mime, "drawio-editor");
 				}
 			});
 
