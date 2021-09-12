@@ -96,7 +96,8 @@ class PageController extends Controller {
 			'stealth' => 1,
 			'spin' => 1,
 			'proto' => 'json',
-			'ui' => self::THEME
+			'ui' => self::THEME,
+			'lang' => $this->l->getLanguageCode()
 		];
 		if (!$canEdit) {
 			$params['chrome'] = 0;
@@ -104,8 +105,7 @@ class PageController extends Controller {
 		$dioString = self::SERVERURL . '?' . http_build_query($params);
 		$response->setParams([
 			'path' => $filePath,
-			'dio_src_string' => $dioString,
-			'lang' => $this->l->getLanguageCode()
+			'dio_src_string' => $dioString
 		]);
 		return $response;
 	}
