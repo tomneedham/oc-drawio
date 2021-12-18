@@ -97,7 +97,7 @@ class PageController extends Controller {
 			'spin' => 1,
 			'proto' => 'json',
 			'ui' => self::THEME,
-			'lang' => $this->l->getLanguageCode()
+			'lang' => substr($this->l->getLanguageCode(), 0, 2)
 		];
 		if (!$canEdit) {
 			$params['chrome'] = 0;
